@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/products';
 import { Language } from '../types';
+import otSetupImage from '../../img/ot setup.webp';
 
 interface HeroProps {
   language: Language;
@@ -165,7 +166,7 @@ anesthesia consumables, x-ray, ultrasound & all hospital equipment र बाय
               <div className="relative rounded-2xl overflow-hidden bg-slate-800/90 border border-slate-700 shadow-2xl backdrop-blur-xl p-3">
                 <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden group">
                   <img
-                    src="./img/ot setup.webp"
+                    src={otSetupImage}
                     alt="Operation Theatre & Surgical Equipment"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
