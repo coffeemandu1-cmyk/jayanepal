@@ -31,22 +31,55 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [contactModalType, setContactModalType] = useState<'whatsapp' | 'email' | null>(null);
+
+  const openContactModal = (type: 'whatsapp' | 'email') => {
+    setContactModalType(type);
+  };
+
+  const closeContactModal = () => {
+    setContactModalType(null);
+  };
+
+  const getWhatsAppText = () => {
+    const subjectLine = form.subject || (isNe ? 'अस्पताल आपूर्ति सोधपुछ' : 'Hospital Supply Inquiry');
+    return isNe
+      ? `नमस्कार जय नेपाल ट्रेडर्स,\n\nमलाई ${subjectLine} सम्बन्धमा सोधपुछ गर्नु परेको छ। पर्छ।\n\n• नाम: ${form.name || '________________'}\n• अस्पताल/संस्था: ${form.institution || '________________'}\n• फोन: ${form.phone || '________________'}\n• इमेल: ${form.email || '________________'}\n\nसन्देश:\n${form.message || 'कृपया विवरण दिनुहोस्।'}`
+      : `Hello Jay Nepal Traders,\n\nI would like to enquire about: ${subjectLine}.\n\n• Name: ${form.name || '________________'}\n• Hospital/Facility: ${form.institution || '________________'}\n• Phone: ${form.phone || '________________'}\n• Email: ${form.email || '________________'}\n\nMessage:\n${form.message || 'Please share your requirements.'}`;
+  };
+
+  const getEmailSubject = () => (isNe ? `[कोटेशन अनुरोध] ${form.subject || 'अस्पताल आपूर्ति'} - ${form.name || 'नयाँ ग्राहक'}` : `[Quotation Request] ${form.subject || 'Hospital Supplies'} - ${form.name || 'New Client'}`);
+
+  const getEmailBody = () => {
+    const subjectLine = form.subject || (isNe ? 'अस्पताल आपूर्ति' : 'Hospital Supplies');
+    return isNe
+      ? `आदरणीय जय नेपाल ट्रेडर्स टीम,\n\nम निम्न विषयमा कोटेशन अनुरोध गर्न चाहन्छु:\n\nविषय: ${subjectLine}\nनाम: ${form.name || '________________'}\nअस्पताल/संस्था: ${form.institution || '________________'}\nफोन: ${form.phone || '________________'}\nइमेल: ${form.email || '________________'}\n\nसन्देश:\n${form.message || 'कृपया गरि उपलब्धता र कोटेशन पठाउनुहोस्।'}`
+      : `Dear Jay Nepal Traders Team,\n\nI would like to request a quotation for the following requirement:\n\nSubject: ${subjectLine}\nName: ${form.name || '________________'}\nHospital/Facility: ${form.institution || '________________'}\nPhone: ${form.phone || '________________'}\nEmail: ${form.email || '________________'}\n\nMessage:\n${form.message || 'Please share stock availability and pricing details.'}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = isNe
-      ? `नमस्कार जय नेपाल ट्रेडर्स,\nसम्पर्क फारममार्फत नयाँ सोधपुछ:\n\nनाम: ${form.name}\nसंस्था: ${form.institution || 'व्यक्तिगत'}\nफोन: ${form.phone}\nविषय: ${form.subject}\nसन्देश: ${form.message}`
-      : `Hello Jay Nepal Traders,\nNew contact inquiry:\n\nName: ${form.name}\nFacility: ${form.institution || 'Individual'}\nPhone: ${form.phone}\nSubject: ${form.subject}\nMessage: ${form.message}`;
+    const text = getWhatsAppText();
 
-    window.open(`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
+    closeContactModal();
     setTimeout(() => setSubmitted(false), 5000);
   };
 
   const handleEmailSubmit = () => {
-    const subjectText = `[सोधपुछ] ${form.subject || 'अस्पताल आपूर्ति'} - ${form.name}`;
-    const bodyText = `नाम: ${form.name}\nसंस्था: ${form.institution}\nफोन: ${form.phone}\nइमेल: ${form.email}\n\nसन्देश:\n${form.message}`;
-    window.location.href = `mailto:${COMPANY_DETAILS.email}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+    const subjectText = getEmailSubject();
+    const bodyText = getEmailBody();
+    window.open(`mailto:${COMPANY_DETAILS.email}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`, '_blank', 'noopener,noreferrer');
+    closeContactModal();
+  };
+
+  const handleWhatsAppSend = () => {
+    const text = getWhatsAppText();
+    window.open(`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    setSubmitted(true);
+    closeContactModal();
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -64,7 +97,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             {isNe
-              ? 'काठमाडौंको त्रिपुरेश्वरस्थित शोरुममा प्रत्यक्ष आई सामान हेर्न सकिनेछ अथवा फोन, ह्वाट्सएप वा इमेलमार्फत अर्डर दिन सकिनेछ।'
+              ? 'काठमाडौंको शोरुममा प्रत्यक्ष आई सामान हेर्न सकिनेछ अथवा फोन, ह्वाट्सएप वा इमेलमार्फत अर्डर दिन सकिनेछ।'
               : 'Visit our medical showroom in Tripureshwor, Kathmandu, or connect via direct hotline, WhatsApp, or email.'}
           </p>
         </div>
@@ -96,7 +129,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
                     {isNe ? COMPANY_DETAILS.addressNe : COMPANY_DETAILS.addressEn}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
-                    (हस्पिटल इक्विपमेन्ट जोन, त्रिपुरेश्वर, काठमाडौं)
+                    (काठमाडौं-२९, काठमाडौं)
                   </div>
                 </div>
               </div>
@@ -170,15 +203,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
 
               {/* Instant WhatsApp Quick Button */}
               <div className="pt-2 border-t border-slate-100">
-                <a
-                  href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent('नमस्ते जय नेपाल ट्रेडर्स, म सम्पर्क गर्न चाहन्छु।')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openContactModal('whatsapp')}
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>{isNe ? 'सिधै ह्वाट्सएपमा कुरा गर्नुहोस्' : 'Direct WhatsApp Chat'}</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -195,9 +227,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
                 />
               </div>
               <div className="flex items-center justify-between text-xs text-slate-600 pt-2 px-1">
-                <span>{isNe ? 'त्रिपुरेश्वर, काठमाडौं (हस्पिटल रोड नजिक)' : 'Tripureshwor, Kathmandu'}</span>
+                <span>{isNe ? 'पुतलीसडक, काठमाडौं' : 'Putalisadak, Kathmandu'}</span>
                 <a
-                  href="https://maps.google.com/?q=Tripureshwor+Kathmandu"
+                  href="https://maps.google.com/?q=Putalisadak+Kathmandu"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-red-600 font-bold hover:underline flex items-center gap-1"
@@ -320,7 +352,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
                 {/* Submit actions: WhatsApp and Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={() => openContactModal('whatsapp')}
                     className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors"
                   >
                     <MessageSquare className="w-4 h-4" />
@@ -329,7 +362,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
 
                   <button
                     type="button"
-                    onClick={handleEmailSubmit}
+                    onClick={() => openContactModal('email')}
                     className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition-colors"
                   >
                     <Mail className="w-4 h-4" />
@@ -342,6 +375,65 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ language }) => {
           </div>
 
         </div>
+
+        {contactModalType && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/65 p-4 backdrop-blur-sm">
+            <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-bold">
+                    {isNe ? 'सन्देश चयन' : 'Send Method'}
+                  </p>
+                  <h3 className="text-lg font-extrabold text-slate-900 mt-1">
+                    {isNe ? 'इमेल वा ह्वाट्सएपमा पठाउनुहोस्' : 'Send your inquiry'}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeContactModal}
+                  className="rounded-lg p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors"
+                  aria-label="Close modal"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-5 space-y-3">
+                <p className="text-sm text-slate-600">
+                  {isNe
+                    ? 'तपाईंले भर्नुभएको विवरणलाई नयाँ सन्देशमा पठाउन सक्नुहुन्छ।'
+                    : 'Use the form details to send your request through your preferred channel.'}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={handleWhatsAppSend}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-xs font-bold text-white hover:bg-emerald-700 transition-colors"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>{isNe ? 'ह्वाट्सएपमा पठाउनुहोस्' : 'Send via WhatsApp'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleEmailSubmit}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-xs font-bold text-white hover:bg-blue-700 transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>{isNe ? 'इमेलमा पठाउनुहोस्' : 'Send via Email'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={closeContactModal}
+                  className="flex w-full items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+                >
+                  {isNe ? 'रद्द गर्नुहोस्' : 'Cancel'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

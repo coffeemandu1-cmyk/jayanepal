@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div className="hidden md:flex items-center gap-1.5 text-slate-300">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-              <span>{isNe ? 'DDA दर्ता नं: १४२/MED/२०७९ | ISO १३४८५ प्रमाणित' : 'DDA Regd: 142/MED/2079 | ISO 13485'}</span>
+              <span>{isNe ? 'औषधि व्यवस्था विभाग मा दर्ता रहेको | ISO १३४८५ प्रमाणित' : 'Health Department Regd | ISO 13485'}</span>
             </div>
           </div>
 

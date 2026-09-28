@@ -22,6 +22,20 @@ import {
 import { Product, Category, Language } from '../types';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import { createProductWhatsAppUrl, createProductEmailUrl } from '../utils/orderHelpers';
+import endosurgeryImage from '../../img/Endosurgery.webp';
+import surgicalConsumablesImage from '../../img/surgical-consumables.webp';
+import surgicalSuturesImage from '../../img/surgical-sutures.webp';
+import uroSurgeryImage from '../../img/urosurgery.jpg';
+import dialysisThumbImage from '../../img/dialysis_thumb.avif';
+import econtImage from '../../img/econt.webp';
+import interventionalRadiologyImage from '../../img/interventional-radiology.avif';
+import medicalConsumablesImage from '../../img/medical-consumables.jpg';
+import kidneyDialysisImage from '../../img/Medical-Kidney-Dialysis.webp';
+import orthoImage from '../../img/ortho.png';
+import orthopedicImplantsImage from '../../img/Orthopedic-Implants.png';
+import otSetupImage from '../../img/ot setup.webp';
+import surgicalSuturesSImage from '../../img/surgical-sutures-s.webp';
+import ultrasoundImage from '../../img/ultrasound.jpg';
 
 interface ProductCatalogProps {
   language: Language;
@@ -94,6 +108,156 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
     setCopiedSku(sku);
     setTimeout(() => setCopiedSku(null), 2000);
   };
+
+  const specialtyCards = [
+    {
+      id: 'endosurgery',
+      image: endosurgeryImage,
+      titleNe: 'एन्डो सर्जरी',
+      titleEn: 'Endo Surgery',
+      descriptionNe: 'मिनिमल इन्वेसिव सर्जरीका लागि प्रिसिजन इन्डोस्कोपिक उपकरण र उपकरणहरू।',
+      descriptionEn: 'Precision endoscopic instruments and devices for minimally invasive surgery and diagnostics.',
+    },
+    {
+      id: 'surgical-consumables',
+      image: surgicalConsumablesImage,
+      titleNe: 'सर्जिकल कन्ज्युमेबल्स',
+      titleEn: 'Surgical Consumables',
+      descriptionNe: 'स्टेराइल ड्रेप्स, ग्लोब्स, क्यानुला, सिरिन्ज र डिस्पोजेबल अस्पताल आपूर्ति।',
+      descriptionEn: 'Sterile drapes, gloves, cannula, syringes, gauze, and dependable disposable supplies.',
+    },
+    {
+      id: 'surgical-sutures',
+      image: surgicalSuturesImage,
+      titleNe: 'सर्जिकल स्युटर',
+      titleEn: 'Surgical Sutures',
+      descriptionNe: 'एबसोरबेबल र नन-एब्सोरबेबल स्युटर र प्रिसिजन क्लोजर सामग्रीहरू।',
+      descriptionEn: 'Absorbable and non-absorbable sutures and precision wound closure materials.',
+    },
+    {
+      id: 'uro-surgery',
+      image: uroSurgeryImage,
+      titleNe: 'युरोलोजी सर्जरी',
+      titleEn: 'Urology Surgery',
+      descriptionNe: 'युरोलोजिकल इन्स्ट्रुमेन्ट्स, क्याथेटर, स्टोन सर्जरी र प्रिसिजन उपकरणहरू।',
+      descriptionEn: 'Urological instruments, catheters, stone surgery devices, and precision care equipment.',
+    },
+  ];
+
+  const allProductsGallery = [
+    {
+      id: 'dialysis-thumb',
+      image: dialysisThumbImage,
+      titleNe: 'हेमोडायलाइसिस एक्सेस सेट',
+      titleEn: 'Hemodialysis Access Set',
+      descriptionNe: 'नेफ्रोलोजी र हेमोडायलाइसिसका लागि विश्वस्त डिवाइस र कन्ज्युमेबल्स।',
+      descriptionEn: 'Reliable nephrology and hemodialysis devices and consumables for renal care units.',
+    },
+    {
+      id: 'econt',
+      image: econtImage,
+      titleNe: 'हस्पिटल इक्विपमेन्ट सिस्टम',
+      titleEn: 'Hospital Equipment System',
+      descriptionNe: 'मोनिटरिङ, एचआईडी र अस्पताल सञ्चालनका लागि उन्नत उपकरण प्रणालीहरू।',
+      descriptionEn: 'Advanced hospital equipment and monitoring systems for efficient clinical operations.',
+    },
+    {
+      id: 'endo-surgery',
+      image: endosurgeryImage,
+      titleNe: 'एन्डो-सर्जरी उपकरण',
+      titleEn: 'Endo-Surgery Devices',
+      descriptionNe: 'मिनिमल इन्वेसिभ सर्जरीका लागि प्रिसिजन इन्डोस्कोपिक उपकरण र एसेसरिजहरू।',
+      descriptionEn: 'Precision endoscopic devices and accessories for minimally invasive surgery.',
+    },
+    {
+      id: 'interventional-radiology',
+      image: interventionalRadiologyImage,
+      titleNe: 'इन्टेर्वेन्शनल रेडियोलोजी',
+      titleEn: 'Interventional Radiology',
+      descriptionNe: 'इमेजिङ, क्याथेटर र इन्भेसिभ प्रोसेडरमा प्रयोग हुने उपकरण र कन्ज्युमेबल्स।',
+      descriptionEn: 'Imaging, catheter, and interventional devices for minimally invasive radiology procedures.',
+    },
+    {
+      id: 'medical-consumables',
+      image: medicalConsumablesImage,
+      titleNe: 'एनेस्थेसिया कन्ज्युमेबल्स',
+      titleEn: 'Anesthesia Consumables',
+      descriptionNe: 'एनेस्थेसिया, सर्वाइभल र रोगी हेरचाहका लागि सुरक्षित डिस्पोजेबल सामग्रीहरू।',
+      descriptionEn: 'Safe disposable materials for anesthesia, procedural care, and patient support.',
+    },
+    {
+      id: 'kidney-dialysis',
+      image: kidneyDialysisImage,
+      titleNe: 'किडनी डायलाइसिस इक्विपमेन्ट',
+      titleEn: 'Kidney Dialysis Equipment',
+      descriptionNe: 'किडनी कयरका लागि सुरक्षित डायलाइसिस डिवाइस, फ्लोइड र सहायक सामग्रीहरू।',
+      descriptionEn: 'Safe dialysis devices, fluid management components, and care consumables for renal units.',
+    },
+    {
+      id: 'ortho',
+      image: orthoImage,
+      titleNe: 'अर्थोपेडिक कन्ज्युमेबल्स',
+      titleEn: 'Orthopedic Consumables',
+      descriptionNe: 'अर्थोपेडिक ओपरेशन र रिकभरीका लागि तर्जुमा, एसेसरिज र सुरक्षात्मक सामग्रीहरू।',
+      descriptionEn: 'Orthopedic surgical disposables, accessories, and protective materials for recovery.',
+    },
+    {
+      id: 'orthopedic-implants',
+      image: orthopedicImplantsImage,
+      titleNe: 'अर्थोपेडिक इम्प्लान्ट्स',
+      titleEn: 'Orthopedic Implant Products',
+      descriptionNe: 'हड्डी र ज्वाइन्ट रिपेयरका लागि स्थिर, नैड्याल र सुरक्षित इम्प्लान्ट समाधानहरू।',
+      descriptionEn: 'Stable, durable implant solutions for bone and joint reconstruction procedures.',
+    },
+    {
+      id: 'ot-setup',
+      image: otSetupImage,
+      titleNe: 'ओटी र अस्पताल इक्विपमेन्ट',
+      titleEn: 'OT & Hospital Equipment',
+      descriptionNe: 'सर्जरी थिएटर र सबै अस्पताल कार्यमा उपयोग हुने आधुनिक उपकरण र सेटअपहरू।',
+      descriptionEn: 'Modern equipment and setup for operation theatres and all hospital departments.',
+    },
+    {
+      id: 'surgical-sutures-s',
+      image: surgicalSuturesSImage,
+      titleNe: 'सर्जिकल स्युटर किट्स',
+      titleEn: 'Surgical Suture Kits',
+      descriptionNe: 'घाउ बन्द गर्न प्रयोग हुने स्युटर किट्स, क्लोजर र वाउन्ड केयर सामग्रीहरू।',
+      descriptionEn: 'Closure kits and suture solutions designed for precise wound management.',
+    },
+    {
+      id: 'surgical-consumables-main',
+      image: surgicalConsumablesImage,
+      titleNe: 'सर्जिकल कन्ज्युमेबल्स',
+      titleEn: 'Surgical Consumables',
+      descriptionNe: 'सर्जिकल ड्रेप्स, ग्लोब्स, क्यानुला, सिरिन्ज र डिस्पोजेबल मेडिकल सामग्रीहरू।',
+      descriptionEn: 'Sterile surgical drapes, gloves, cannula, syringes, and disposable clinical supplies.',
+    },
+    {
+      id: 'surgical-sutures-main',
+      image: surgicalSuturesImage,
+      titleNe: 'प्रिमियम सर्जिकल स्युटर',
+      titleEn: 'Premium Surgical Sutures',
+      descriptionNe: 'एब्सोरबेबल र नन-एब्सोरबेबल सर्जिकल स्युटर र क्लोजर सामग्रीहरू।',
+      descriptionEn: 'Absorbable and non-absorbable sutures and closure materials for surgical use.',
+    },
+    {
+      id: 'ultrasound',
+      image: ultrasoundImage,
+      titleNe: 'एक्स-रे र अल्ट्रासाउन्ड',
+      titleEn: 'X-ray & Ultrasound',
+      descriptionNe: 'डायग्नोस्टिक इमेजिङका लागि एक्स-रे, अल्ट्रासाउन्ड र सहायक डिवाइसहरू।',
+      descriptionEn: 'Diagnostic imaging devices including X-ray, ultrasound, and supporting equipment.',
+    },
+    {
+      id: 'uro-surgery-main',
+      image: uroSurgeryImage,
+      titleNe: 'युरो-सर्जरी डिभाइस',
+      titleEn: 'Uro-Surgery Devices',
+      descriptionNe: 'युरोलोजिकल प्रोसेडर, क्याथेटर र स्टोन सर्जरीका लागि परिशुद्ध उपकरणहरू।',
+      descriptionEn: 'Precision uro-surgical devices, catheters, and stone surgery instruments.',
+    },
+  ];
 
   return (
     <section id="catalog" className="py-16 bg-slate-50 border-b border-slate-200">
@@ -184,6 +348,86 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             })}
           </div>
         </div>
+
+        {selectedCategory === 'all' && (
+          <div className="mb-8">
+            <div className="flex gap-6 overflow-x-auto pb-3 scrollbar-thin">
+              {allProductsGallery.map((card) => (
+                <article
+                  key={card.id}
+                  className="min-w-[260px] sm:min-w-[280px] bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group"
+                >
+                  <div className="relative h-52 overflow-hidden bg-slate-100">
+                    <img
+                      src={card.image}
+                      alt={isNe ? card.titleNe : card.titleEn}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  <div className="p-5 flex-1 flex flex-col">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">
+                      {isNe ? card.titleNe : card.titleEn}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 flex-1">
+                      {isNe ? card.descriptionNe : card.descriptionEn}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => onOpenQuickRfq()}
+                      className="mt-auto inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700 transition-colors"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>{isNe ? 'कोटेशन माग्नुहोस्' : 'Request Quote'}</span>
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {selectedCategory !== 'all' && (
+          <div className="mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {specialtyCards.map((card) => (
+                <article
+                  key={card.id}
+                  className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group"
+                >
+                  <div className="relative h-52 overflow-hidden bg-slate-100">
+                    <img
+                      src={card.image}
+                      alt={isNe ? card.titleNe : card.titleEn}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  <div className="p-5 flex-1 flex flex-col">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">
+                      {isNe ? card.titleNe : card.titleEn}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 flex-1">
+                      {isNe ? card.descriptionNe : card.descriptionEn}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => onOpenQuickRfq()}
+                      className="mt-auto inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700 transition-colors"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>{isNe ? 'कोटेशन माग्नुहोस्' : 'Request Quote'}</span>
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Product Grid */}
         {filteredProducts.length > 0 ? (

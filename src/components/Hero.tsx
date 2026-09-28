@@ -75,7 +75,9 @@ export const Hero: React.FC<HeroProps> = ({
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
               {isNe ? (
                 <>
-                  <strong className="text-white">जय नेपाल ट्रेडर्स</strong> - सरकारी तथा निजी अस्पताल, नर्सिङ होम, क्लिनिक र ल्याबहरूका लागि आवश्यक जर्मन-ग्रेड सर्जिकल औजार, ५-फङ्सन आइसियू बेड, ओटी लाइट, डिस्पोजेबल कन्ज्युमेबल्स र बायोमेडिकल उपकरणहरूको आधिकारिक विक्रेता।
+                  <strong className="text-white">जय नेपाल ट्रेडर्स</strong> - सरकारी तथा निजी अस्पताल, नर्सिङ होम, क्लिनिक र ल्याबहरूका लागि आवश्यक जर्मन-ग्रेड सर्जिकल औजार, ५-फङ्सन आइसियू बेड, ओटी लाइट, डिस्पोजेबल कन्ज्युमेबल्स, <br></br> surgical consumables, surgical sutures, endo-surgery devices, nephrology/hemodialysis device and consumables
+uro-surgery devices, orthopedic consumable and implant products, intervention radiology consumables/ devices, 
+anesthesia consumables, x-ray, ultrasound & all hospital equipment र बायोमेडिकल उपकरणहरूको आधिकारिक विक्रेता।
                 </>
               ) : (
                 <>
@@ -163,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="relative rounded-2xl overflow-hidden bg-slate-800/90 border border-slate-700 shadow-2xl backdrop-blur-xl p-3">
                 <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden group">
                   <img
-                    src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1000&q=80"
+                    src="./img/ot setup.webp"
                     alt="Operation Theatre & Surgical Equipment"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />

@@ -97,7 +97,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ language }) => {
               {isNe ? 'आधिकारिक सरकारी दर्ता र कानुनी विवरण' : 'Verified Business & Tax Accreditation'}
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-white">
-              {isNe ? 'नेपाल औषधि व्यवस्था विभाग दर्ता नं: १४२/MED/२०७९' : 'DDA Nepal Registered & Verified Healthcare Firm'}
+              {isNe ? 'औषधि व्यवस्था विभाग दर्ता नं: १४२/MED/२०७९' : 'DDA Nepal Registered & Verified Healthcare Firm'}
             </h3>
             <p className="text-xs text-slate-300">
               {COMPANY_DETAILS.panVat} • {COMPANY_DETAILS.isoReg} • Kathmandu, Nepal

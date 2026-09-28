@@ -9,12 +9,26 @@
     <meta property="og:description" content="नेपालभरका अस्पताल र स्वास्थ्य संस्थाहरूका लागि भरपर्दो सर्जिकल सामान र मेडिकल उपकरण आपूर्तिकर्ता।" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-red-500 selection:text-white">
     <div id="root"></div>
+    <script>
+      // Opening this source file directly should use the self-contained build,
+      // since browsers cannot load Vite's /src module path from file:// URLs.
+      const isBuiltPage = /\/dist\/index\.html$/i.test(
+        decodeURIComponent(window.location.pathname),
+      );
+      if (window.location.protocol === 'file:' && !isBuiltPage) {
+        const builtPage = new URL('./dist/index.html', window.location.href);
+        if (window.location.href !== builtPage.href) {
+          window.location.replace(builtPage.href);
+        }
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

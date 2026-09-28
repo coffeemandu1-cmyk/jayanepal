@@ -1,0 +1,45 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redCrossGrad" x1="24" y1="26" x2="118" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EF4444"/>
+      <stop offset="1" stop-color="#DC2626"/>
+    </linearGradient>
+    <linearGradient id="blueCrossGrad" x1="112" y1="104" x2="198" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0284C7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path d="M34 80C34 62 46 50 64 50H96C106 50 112 54 116 62V38C116 24 124 16 136 16H148C158 16 164 22 164 30V132C164 138 160 142 154 142H116V176C116 188 108 196 96 196H80C72 196 66 188 66 180V146C66 134 56 124 44 124H28C20 124 16 120 16 112V94C16 86 20 80 34 80Z" fill="url(#redCrossGrad)"/>
+    <path d="M124 118C124 112 128 108 134 108H170C182 108 192 98 192 86V58C192 50 198 44 206 44H218C228 44 234 50 234 60V160C234 176 222 188 206 188H172C162 188 154 196 154 206V222C154 230 148 236 140 236H126C120 236 116 232 116 226V132C116 124 120 118 124 118Z" fill="url(#blueCrossGrad)"/>
+  </g>
+
+  <g transform="translate(48,36) scale(0.78)" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M38 20V34C38 48 54 48 54 34V20"/>
+    <circle cx="38" cy="18" r="3.5" fill="#FFFFFF"/>
+    <circle cx="54" cy="18" r="3.5" fill="#FFFFFF"/>
+    <path d="M46 50V66C46 88 20 92 20 112C20 132 58 132 58 150"/>
+    <circle cx="58" cy="157" r="10" fill="#E2E8F0" stroke="#FFFFFF" stroke-width="4"/>
+    <circle cx="58" cy="157" r="4.5" fill="#DC2626"/>
+  </g>
+
+  <g transform="translate(132,98) rotate(-38) scale(0.76)">
+    <line x1="12" y1="2" x2="12" y2="24" stroke="#F1F5F9" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="8,24 16,24 14,30 10,30" fill="#FBBF24"/>
+    <rect x="6" y="30" width="12" height="60" rx="2" fill="#FFFFFF" fill-opacity="0.88" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="8" y1="40" x2="14" y2="40" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+    <line x1="10" y1="48" x2="14" y2="48" stroke="#0284C7" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="8" y1="56" x2="14" y2="56" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+    <line x1="10" y1="64" x2="14" y2="64" stroke="#0284C7" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="8" y1="72" x2="14" y2="72" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+    <line x1="10" y1="80" x2="14" y2="80" stroke="#0284C7" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="7" y="52" width="10" height="6" rx="1" fill="#0369A1"/>
+    <line x1="12" y1="58" x2="12" y2="100" stroke="#FFFFFF" stroke-width="4"/>
+    <line x1="5" y1="90" x2="19" y2="90" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="4" y1="100" x2="20" y2="100" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -5,7 +5,33 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    base: process.env.VITE_BASE_PATH || './',
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        // The production bundle has no module imports. Loading it as a classic
+        // deferred script lets it run when dist/index.html is opened via file://.
+        name: 'file-protocol-script',
+        apply: 'build',
+        transformIndexHtml: {
+          order: 'post',
+          handler(html) {
+            return html
+              .replace(
+                /<script type="module" crossorigin src="(\.\/assets\/[^\"]+\.js)"><\/script>/,
+                '<script defer src="$1"></script>',
+              )
+              // A CORS-mode stylesheet request can fail under file://. The
+              // local stylesheet is safe to load without this attribute.
+              .replace(
+                /<link rel="stylesheet" crossorigin href="(\.\/assets\/[^\"]+\.css)">/,
+                '<link rel="stylesheet" href="$1">',
+              );
+          },
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
